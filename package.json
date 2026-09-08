@@ -1,0 +1,48 @@
+{
+  "name": "wallet-chain-validator",
+  "version": "0.1.0",
+  "description": "Chain-based crypto wallet address validator with exchange token registry (EVM, Bitcoin, Litecoin, Dogecoin, Tron, Solana, Ripple)",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "test": "vitest run",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "keywords": [
+    "crypto",
+    "wallet",
+    "address",
+    "validator",
+    "evm",
+    "ethereum",
+    "bitcoin",
+    "tron",
+    "solana",
+    "ripple"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "js-sha3": "^0.9.3",
+    "js-sha256": "^0.11.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0"
+  }
+}
