@@ -33,6 +33,14 @@
     "ripple"
   ],
   "license": "MIT",
+  "author": "vincent2025923",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vincent2025923/wallet-chain-validator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vincent2025923/wallet-chain-validator/issues"
+  },
   "engines": {
     "node": ">=18"
   },
