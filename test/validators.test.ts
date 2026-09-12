@@ -159,6 +159,22 @@ describe("registry-driven validate()", () => {
     expect(validate(btc, "SOMENEWTOKEN", { chainType: "erc20" })).toBe(false);
   });
 
+  it("rejects a valid Solana-style address for USDT on BNB Smart Chain", () => {
+    // Genuinely valid Solana format (decodes to 32 bytes) — still must be
+    // rejected on BEP-20, where only 0x + 40 hex addresses exist.
+    const solStyle = "GeeojavpQ4cKHP7vJ3j27BzjFLnQpLUJHoWuJFpYwZKX";
+    expect(isValidSolanaAddress(solStyle)).toBe(true);
+    expect(validate(solStyle, "USDT", { chainType: "bep20" })).toBe(false);
+    expect(validate(solStyle, "USDT", { chainType: "bnb" })).toBe(false);
+    expect(validate(solStyle, "USDT")).toBe(false);
+  });
+
+  it("recognizes 'BNB' and 'binance smart chain' as BNB Smart Chain labels", () => {
+    expect(validate(eth, "USDT", { chainType: "BNB" })).toBe(true);
+    expect(validate(eth, "USDT", { chainType: "binance smart chain" })).toBe(true);
+    expect(validate(sol, "USDT", { chainType: "BNB" })).toBe(false);
+  });
+
   it("unknown symbols throw (WAValidator-compatible behavior)", () => {
     expect(() => validate(eth, "NOTACOIN")).toThrow(/Missing validator/);
     expect(() => validate(eth, "ETH", { chainType: "wtf" })).toThrow(
