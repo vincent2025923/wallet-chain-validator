@@ -1,6 +1,6 @@
 {
   "name": "wallet-chain-validator",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Chain-based crypto wallet address validator with exchange token registry (EVM, Bitcoin, Litecoin, Dogecoin, Tron, Solana, Ripple)",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
